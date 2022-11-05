@@ -68,9 +68,9 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="flex flex-col items-stretch justify-start min-h-screen">
         <Header menuItems={menuItems} />
-        <main>
+        <main className="flex-grow">
           <Outlet />
         </main>
         <Footer socialAccounts={socialAccounts} resume={resume} />

@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import CASE_STUDY_PREVIEWS from "./caseStudyPreview.fragment.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -24,32 +25,12 @@ export const HEADER_FOOTER_INFO = gql`
 `;
 
 export const CASE_STUDIES = gql`
-  query caseStudies {
+  query CaseStudiesPreviews {
     caseStudies {
-      edges {
-        node {
-          id
-          title
-          uri
-          featuredImage {
-            node {
-              altText
-              sourceUrl
-            }
-          }
-          caseStudies {
-            ctaTitle
-            ctaDescription
-            subtitle
-            teaser
-            overview {
-              overviewPoint
-            }
-          }
-        }
-      }
+      ...caseStudyPreviewsFragment
     }
   }
+  ${CASE_STUDY_PREVIEWS}
 `;
 
 export const HOME_QUERY = gql`
@@ -74,35 +55,8 @@ export const HOME_QUERY = gql`
       }
     }
     caseStudies(first: 2) {
-      nodes {
-        title
-        date
-        id
-        slug
-        tags {
-          nodes {
-            id
-            name
-          }
-        }
-        caseStudies {
-          overview {
-            overviewPoint
-          }
-          subtitle
-          teaser
-          ctaTitle
-          ctaDescription
-        }
-        featuredImage {
-          node {
-            id
-            altText
-            sourceUrl(size: LARGE)
-            srcSet(size: LARGE)
-          }
-        }
-      }
+      ...caseStudyPreviewsFragment
     }
   }
+  ${CASE_STUDY_PREVIEWS}
 `;

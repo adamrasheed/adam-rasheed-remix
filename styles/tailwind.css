@@ -23,16 +23,39 @@
     font-family: -apple-system-body, sans-serif;
   }
 
+  .header {
+    @apply container grid place-items-center gap-4;
+    grid-template-columns: auto auto;
+  }
+
+  .header-title-text::after {
+    content: "";
+    height: 1rem;
+    width: 1px;
+    display: inline-block;
+    background: currentColor;
+    margin: 0px 4px 0px 6px;
+  }
+
+  .mobile-menu {
+    @apply transition-all top-0 w-full left-0 z-10 -translate-x-full bg-white absolute h-screen;
+    height: calc(100vh);
+  }
+
+  .mobile-menu.open {
+    @apply translate-x-0;
+  }
+
+  .small-caps {
+    font-variant-caps: all-small-caps;
+  }
+
+  .letter-spacing {
+    letter-spacing: 0.05em;
+  }
+
   section {
     @apply sm:py-10 md:py-16 lg:py-20 xl:py-36;
-  }
-
-  .hero {
-    @apply container my-20;
-  }
-
-  .hero-title {
-    @apply text-4xl sm:text-6xl font-bold mb-6 leading-tight mb-4;
   }
 
   .btn {
@@ -85,7 +108,7 @@
   }
 
   .preview-category-header {
-    @apply grid mb-8;
+    @apply grid mb-8 px-4;
     grid-template-columns: 1fr auto;
   }
 
@@ -95,6 +118,7 @@
     letter-spacing: 0.05em;
   }
 
+  .accent::after,
   .preview-category-title::after {
     content: "";
     display: inline-block;
@@ -116,7 +140,7 @@
   }
 
   .case-study-preview {
-    @apply mb-16 grid;
+    @apply mb-16 px-4 grid;
     grid-gap: 2rem;
   }
 

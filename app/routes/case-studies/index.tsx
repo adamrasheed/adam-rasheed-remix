@@ -2,48 +2,24 @@ import { useLoaderData } from "@remix-run/react";
 import CaseStudyPreview from "~/components/CaseStudyPreview";
 import { client } from "~/lib/apollo";
 import { CASE_STUDIES } from "~/queries";
-import { ICaseStudyPreview } from "~/types";
+import { ICaseStudyPreview, IHome } from "~/types";
 
 export async function loader() {
-  const { data } = await client.query({ query: CASE_STUDIES });
+  const { data } = await client.query<{ caseStudies: IHome["caseStudies"] }>({
+    query: CASE_STUDIES,
+  });
 
   const caseStudies: ICaseStudyPreview[] = data?.caseStudies?.edges?.map(
-    (caseStudy) => {
-      const {
-        id,
-        title,
-        uri,
-        featuredImage: { node: img },
-        caseStudies: { ctaTitle, ctaDescription, subtitle, teaser, overview },
-        ...rest
-      } = caseStudy.node;
-      console.log("rest", overview);
-
-      const overviewPoints = overview.map((item) => item.overviewPoint);
-
-      return {
-        __typename: "CaseStudy",
-        id,
-        title,
-        uri,
-        featuredImg: {
-          src: img.sourceUrl,
-          alt: img.altText,
-        },
-        ctaTitle,
-        ctaDescription,
-        subtitle,
-        teaser,
-        overviewPoints,
-      };
-    }
+    ({ node }) => node
   );
 
   return { caseStudies };
 }
 
 export default function CaseStudies() {
-  const { caseStudies } = useLoaderData<{ caseStudies: ICaseStudyPreview[] }>();
+  const { caseStudies } = useLoaderData<{
+    caseStudies: ICaseStudyPreview[];
+  }>();
 
   console.log(caseStudies);
 
@@ -52,7 +28,9 @@ export default function CaseStudies() {
       <h1 className="page-title">Case Studies</h1>
       <div className="case-study-previews">
         {!!caseStudies.length &&
-          caseStudies.map((preview) => <CaseStudyPreview />)}
+          caseStudies.map((preview) => (
+            <CaseStudyPreview key={preview.id} {...{ ...preview }} />
+          ))}
       </div>
     </div>
   );

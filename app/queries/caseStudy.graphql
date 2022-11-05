@@ -1,0 +1,21 @@
+query CaseStudyQuery($slug: ID!) {
+  caseStudy(id: $slug, idType: URI) {
+    id
+    title
+    uri
+    featuredImage {
+      node {
+        altText
+        sourceUrl
+        srcSet
+      }
+    }
+    customFields {
+      subtitle
+      teaser
+      overview {
+        overviewPoint
+      }
+    }
+  }
+}

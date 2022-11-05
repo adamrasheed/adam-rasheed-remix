@@ -1,0 +1,23 @@
+fragment caseStudyPreviewsFragment on RootQueryToCaseStudyConnection {
+  edges {
+    node {
+      id
+      title
+      uri
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+          srcSet
+        }
+      }
+      customFields {
+        subtitle
+        teaser
+        overview {
+          overviewPoint
+        }
+      }
+    }
+  }
+}

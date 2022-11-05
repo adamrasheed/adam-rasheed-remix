@@ -1,10 +1,14 @@
-import { Link, NavLink, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
+
+import CaseStudyPreview from "~/components/CaseStudyPreview";
 import { client } from "~/lib/apollo";
 import { HOME_QUERY } from "~/queries";
-import { Home } from "~/types";
+import type { IHome } from "~/types";
 
 export async function loader() {
   const { data } = await client.query({ query: HOME_QUERY });
+
+  console.log("DATA", data);
 
   return data ?? null;
 }
@@ -12,13 +16,15 @@ export async function loader() {
 export default function Index() {
   const {
     siteOptions: { options },
-    caseStudies: { nodes: caseStudyPreviews },
-  } = useLoaderData<Home>();
+    caseStudies: { edges: caseStudyPreviews },
+  } = useLoaderData<IHome>();
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <div className="hero">
-        <h1 className="hero-title">{options.tagline}</h1>
+      <div className="container mt-10 mb-20">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-6 leading-tight mb-4">
+          {options.tagline}
+        </h1>
         <div
           className="her-description body"
           dangerouslySetInnerHTML={{ __html: options.career }}
@@ -27,54 +33,15 @@ export default function Index() {
       <div className="case-study-previews">
         <div className="preview-category-header">
           <h3 className="preview-category-title">Case Studies</h3>
-          <NavLink
+          <Link
             to={"/case-studies"}
             className="font-bold preview-category-link"
           >
             More Case Studies +
-          </NavLink>
+          </Link>
         </div>
-        {caseStudyPreviews.map((caseStudy) => (
-          <div className="case-study-preview" key={caseStudy.id}>
-            <Link to={`/case-studies/${caseStudy.slug}`}>
-              <img
-                src={caseStudy.featuredImage.node.sourceUrl}
-                srcSet={caseStudy.featuredImage.node.srcSet}
-                alt={caseStudy.featuredImage.node.altText}
-                className="case-study-preview-image"
-              />
-            </Link>
-            <div className="case-study-preview-content">
-              <div>
-                <h3 className="case-study-preview-title">
-                  <Link to={`/case-studies/${caseStudy.slug}`}>
-                    {caseStudy.title}
-                  </Link>
-                </h3>
-                <ul className="case-study-overviews">
-                  {caseStudy.caseStudies.overview?.map((overview) => (
-                    <li
-                      className="case-study-overview"
-                      key={overview.overviewPoint}
-                    >
-                      {overview.overviewPoint}
-                    </li>
-                  ))}
-                </ul>
-                <NavLink className="btn" to={`case-studies/${caseStudy.slug}`}>
-                  View Case Study
-                </NavLink>
-              </div>
-              <div>
-                <h3 className="case-study-subtitle">
-                  {caseStudy.caseStudies.subtitle}
-                </h3>
-                <p className="case-study-teaser">
-                  {caseStudy.caseStudies.teaser}
-                </p>
-              </div>
-            </div>
-          </div>
+        {caseStudyPreviews.map(({ node }) => (
+          <CaseStudyPreview key={node.id} {...{ ...node }} />
         ))}
       </div>
       <section className="cta-section">

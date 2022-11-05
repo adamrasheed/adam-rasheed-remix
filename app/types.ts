@@ -1,29 +1,19 @@
-export type CaseStudy = {
+export type ICaseStudyPreview = {
   __typename: "CaseStudy";
   id: string;
   title: string;
-  date: string;
-  slug: string;
-  tags: {
-    __typename: "CaseStudyToTagConnection";
-    nodes: {
-      id: string;
-      name: string;
-      __typename: "Tag";
-    }[];
-  };
+  uri: string;
   featuredImage: {
     __typename: "NodeWithFeaturedImageToMediaItemConnectionEdge";
     node: {
       __typename: "MediaItem";
-      id: string;
       altText: string;
       sourceUrl: string;
       srcSet: string;
     };
   };
-  caseStudies: {
-    __typename: "CaseStudy_Casestudies";
+  customFields: {
+    __typename: "CaseStudy_Customfields";
     overview: {
       overviewPoint: string;
       __typename: "CaseStudy_Casestudies_overview";
@@ -33,21 +23,20 @@ export type CaseStudy = {
   };
 };
 
-export type ICaseStudyPreview = {
-  __typename: "CaseStudy";
-  id: string;
-  title: string;
-  uri: string;
-  featuredImg: {
-    src: string;
-    alt: string;
-  };
-  ctaTitle: string;
-  ctaDescription: string;
-  subtitle: string;
-  teaser: string;
-  overviewPoints: string[];
-};
+// siteOptions: {
+//     __typename: 'SiteOptions',
+//     options: {
+//       __typename: 'SiteOptions_Options',
+//       title: 'Front-end Developer',
+//       tagline: 'I’m a Front-end Engineer Based in Southern California  ☀️🏖.',
+//       specialization: 'I specialize in Enterprise Apps (in React) and Shopify projects.',
+//       career: '<p>Currently working as a software engineer at <a href="https://www.doordash.com/">DoorDash</a><br />\n' +
+//         'Previously at <a href="https://sureapp.com/">Sure</a> and <a href="https://nexttrucking.com/">NEXT Trucking</a>.</p>\n',
+//       hideCareer: null,
+//       resume: 'https://www.dropbox.com/s/vl9bc3sciauqgxv/Adam-Rasheed-CV-2021.pdf?dl=0',
+//       socialAccounts: [Array]
+//     }
+//   },
 
 export type SiteOptions = {
   __typename: "SiteOptions";
@@ -64,8 +53,6 @@ export type SiteOptions = {
       account: string;
       url: {
         __typename: "AcfLink";
-        target: string;
-        title: string;
         url: string;
       };
     }[];
@@ -85,7 +72,7 @@ export type MenuItem = {
 };
 
 export type SocialAccount = {
-  __typename: "SiteOptions_Options_socialAccounts";
+  __typename: "SiteOptions";
   account: string;
   url: {
     __typename: "AcfLink";
@@ -93,11 +80,13 @@ export type SocialAccount = {
   };
 };
 
-export type Home = {
+export type IHome = {
   siteOptions: SiteOptions;
   caseStudies: {
     __typename: "RootQueryToPostConnection";
-
-    nodes: CaseStudy[];
+    edges: {
+      __typename: "RootQueryToCaseStudyConnectionEdge";
+      node: ICaseStudyPreview;
+    }[];
   };
 };
