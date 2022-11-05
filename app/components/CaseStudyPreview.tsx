@@ -10,6 +10,8 @@ const CaseStudyPreview: FC<ICaseStudyPreview> = ({
   customFields,
 }) => {
   const img = featuredImage.node;
+  console.log("casetsutdyURI", uri);
+
   return (
     <div className="case-study-preview" key={id}>
       <Link to={uri}>

@@ -72,6 +72,9 @@
     text-decoration: none;
   }
 
+  .container.no-padding {
+  }
+
   .footer {
     @apply py-8 border-t;
     border-color: currentColor;
@@ -179,6 +182,48 @@
   }
 
   .page-title {
-    @apply mb-8;
+    @apply font-bold text-xl mb-8;
+  }
+
+  .page-content {
+    @apply my-8 space-y-4;
+  }
+
+  .page-content > *:not(img):not(figure) {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-content h1,
+  .page-content h2,
+  .page-content h3,
+  .page-content h5 {
+    font-weight: bold;
+  }
+
+  .page-content h2 {
+    @apply text-3xl;
+  }
+
+  .page-content h3 {
+    @apply text-2xl;
+  }
+
+  .page-content img,
+  .page-content figure {
+    display: block;
+    width: 100%;
+  }
+
+  div.wp-caption {
+    max-width: 100%;
+  }
+  figcaption {
+    font-size: 0.875rem;
+    font-variant-caps: all-small-caps;
+    text-align: center;
+    margin: 0.5rem auto;
+    font-weight: 500;
   }
 }

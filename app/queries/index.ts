@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import CASE_STUDY_PREVIEWS from "./caseStudyPreview.fragment.graphql";
+import CASE_STUDY from "./caseStudy.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -22,6 +23,10 @@ export const HEADER_FOOTER_INFO = gql`
       }
     }
   }
+`;
+
+export const CASE_STUDY_QUERY = gql`
+  ${CASE_STUDY}
 `;
 
 export const CASE_STUDIES = gql`

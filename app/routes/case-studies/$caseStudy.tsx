@@ -2,19 +2,53 @@ import { LoaderArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { client } from "~/lib/apollo";
-import CaseStudyQuery from "../../queries/";
+import type { ICaseStudy } from "~/types";
+import { CASE_STUDY_QUERY } from "../../queries";
 
 export async function loader({ params }: LoaderArgs) {
   const slug = params.caseStudy;
   console.log({ slug });
 
-  const { data } = await client.query({ query: CaseStudy });
+  const { data } = await client.query({
+    query: CASE_STUDY_QUERY,
+    variables: { slug },
+  });
 
-  return null;
-  // return data ?? null;
+  return data;
 }
 
 export default function CaseStudy() {
-  const data = useLoaderData();
+  const { caseStudy } = useLoaderData<{ caseStudy: ICaseStudy }>();
+
+  console.log(caseStudy);
+
+  const {
+    title,
+    featuredImage: { node: img },
+    content,
+  } = caseStudy;
+
+  return (
+    <>
+      <div className="container">
+        <h1 className="page-title">{title}</h1>
+      </div>
+      <div className="container p-0">
+        <img
+          src={img.sourceUrl}
+          alt={img.sourceUrl}
+          srcSet={img.srcSet}
+          className="case-study-img"
+        />
+      </div>
+      <div className="container">
+        <div
+          className="page-content"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    </>
+  );
+
   return <p>Case study</p>;
 }

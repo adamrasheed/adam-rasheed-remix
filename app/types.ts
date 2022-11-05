@@ -23,20 +23,7 @@ export type ICaseStudyPreview = {
   };
 };
 
-// siteOptions: {
-//     __typename: 'SiteOptions',
-//     options: {
-//       __typename: 'SiteOptions_Options',
-//       title: 'Front-end Developer',
-//       tagline: 'I’m a Front-end Engineer Based in Southern California  ☀️🏖.',
-//       specialization: 'I specialize in Enterprise Apps (in React) and Shopify projects.',
-//       career: '<p>Currently working as a software engineer at <a href="https://www.doordash.com/">DoorDash</a><br />\n' +
-//         'Previously at <a href="https://sureapp.com/">Sure</a> and <a href="https://nexttrucking.com/">NEXT Trucking</a>.</p>\n',
-//       hideCareer: null,
-//       resume: 'https://www.dropbox.com/s/vl9bc3sciauqgxv/Adam-Rasheed-CV-2021.pdf?dl=0',
-//       socialAccounts: [Array]
-//     }
-//   },
+export type ICaseStudy = { content: string } & ICaseStudyPreview;
 
 export type SiteOptions = {
   __typename: "SiteOptions";
