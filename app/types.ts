@@ -61,12 +61,15 @@ export type IAboutTalk = {
 };
 
 export type IAboutPage = {
-  customFields: {
-    __typename: "Page_Customfields";
-    education: IAboutEducation[];
-    talks: IAboutTalk[];
-  };
-} & IPage;
+  page: {
+    customFields: {
+      __typename: "Page_Customfields";
+      education: IAboutEducation[];
+      talks: IAboutTalk[];
+    };
+  } & IPage;
+  posts: IAboutPostPreviews;
+};
 
 export type ICaseStudy = { content: string } & ICaseStudyPreview;
 
@@ -121,4 +124,45 @@ export type IHome = {
       node: ICaseStudyPreview;
     }[];
   };
+};
+
+export type IPostPreviewSansExcerpt = {
+  __typename: "RootQueryToPostConnectionEdge";
+  node: Omit<IPostPreview, "excerpt">;
+};
+
+export type IPostPreviewEdge = {
+  __typename: "RootQueryToPostConnectionEdge";
+  node: IPostPreview;
+};
+
+export type IPostPreview = {
+  __typename: "Post";
+  id: string;
+  title: string;
+  date: string;
+  uri: string;
+  excerpt: string;
+  contentType: IContentType;
+};
+
+export type IPostPreviews = {
+  __typename: "RootQueryToPostConnection";
+  edges: IPostPreviewEdge[];
+};
+
+export type IAboutPostPreviews = {
+  __typename: "RootQueryToPostConnection";
+  edges: IPostPreviewSansExcerpt[];
+};
+
+export type IContentType = {
+  node: { name: string; uri: string; __typename: "ContentType" };
+};
+
+export type IPostCustomFields = {
+  convertkitFormId: string | null;
+  ctaDescription: string | null;
+  ctaTitle: string | null;
+  __typename: "Post_Postacf";
 };

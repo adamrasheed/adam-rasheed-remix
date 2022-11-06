@@ -20,8 +20,6 @@ export async function loader({ params }: LoaderArgs) {
 export default function CaseStudy() {
   const { caseStudy } = useLoaderData<{ caseStudy: ICaseStudy }>();
 
-  console.log(caseStudy);
-
   const {
     title,
     featuredImage: { node: img },
@@ -49,6 +47,4 @@ export default function CaseStudy() {
       </div>
     </>
   );
-
-  return <p>Case study</p>;
 }

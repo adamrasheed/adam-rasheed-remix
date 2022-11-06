@@ -10,6 +10,7 @@ query AboutPage {
         srcSet
       }
     }
+
     content
     customFields {
       education {
@@ -25,6 +26,22 @@ query AboutPage {
           url
         }
         description
+      }
+    }
+  }
+  posts(first: 2) {
+    edges {
+      node {
+        id
+        title
+        uri
+        date
+        contentType {
+          node {
+            name
+            uri
+          }
+        }
       }
     }
   }

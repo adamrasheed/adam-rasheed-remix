@@ -1,0 +1,13 @@
+query BlogPost($slug: ID!) {
+  post(id: $slug, idType: URI) {
+    id
+    title
+    date
+    content
+    postAcf {
+      ctaTitle
+      ctaDescription
+      convertkitFormId
+    }
+  }
+}

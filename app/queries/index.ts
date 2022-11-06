@@ -2,6 +2,8 @@ import { gql } from "@apollo/client";
 import CASE_STUDY_PREVIEWS from "./caseStudyPreview.fragment.graphql";
 import ABOUT_PAGE from "./aboutPage.graphql";
 import CASE_STUDY from "./caseStudy.graphql";
+import CONTENT_TYPE from "./contentType.fragment.graphql";
+import BLOG_POST_QUERY from "./blogPost.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -69,4 +71,26 @@ export const HOME_QUERY = gql`
     }
   }
   ${CASE_STUDY_PREVIEWS}
+`;
+
+export const BLOG_PREVIEWS = gql`
+  query BlogPreviews {
+    posts {
+      edges {
+        node {
+          id
+          title
+          uri
+          date
+          excerpt
+          ...ContentTypeFragment
+        }
+      }
+    }
+  }
+  ${CONTENT_TYPE}
+`;
+
+export const BLOG_POST = gql`
+  ${BLOG_POST_QUERY}
 `;
