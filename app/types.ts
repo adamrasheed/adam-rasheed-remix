@@ -23,6 +23,51 @@ export type ICaseStudyPreview = {
   };
 };
 
+export type IPage = {
+  __typename: "Page";
+  id: string;
+  title: string;
+  uri: string;
+  featuredImage: {
+    __typename: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+    node: {
+      __typename: "MediaItem";
+      altText: string;
+      sourceUrl: string;
+      srcSet: string;
+    };
+  };
+  content: string;
+};
+
+export type IAboutEducation = {
+  __typename: "Page_Customfields_education";
+  title: "UI Design in Sketch Course";
+  description: "Exclusive course for sitepoint.com";
+  url: {
+    __typename: "AcfLink";
+    url: string;
+  };
+};
+
+export type IAboutTalk = {
+  __typename: "Page_Customfields_talks";
+  title: "Design for Entrepreneurs";
+  url: {
+    __typename: "AcfLink";
+    url: string;
+  };
+  description: string;
+};
+
+export type IAboutPage = {
+  customFields: {
+    __typename: "Page_Customfields";
+    education: IAboutEducation[];
+    talks: IAboutTalk[];
+  };
+} & IPage;
+
 export type ICaseStudy = { content: string } & ICaseStudyPreview;
 
 export type SiteOptions = {

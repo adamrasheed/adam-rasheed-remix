@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import CASE_STUDY_PREVIEWS from "./caseStudyPreview.fragment.graphql";
+import ABOUT_PAGE from "./aboutPage.graphql";
 import CASE_STUDY from "./caseStudy.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
@@ -23,6 +24,10 @@ export const HEADER_FOOTER_INFO = gql`
       }
     }
   }
+`;
+
+export const ABOUT_PAGE_QUERY = gql`
+  ${ABOUT_PAGE}
 `;
 
 export const CASE_STUDY_QUERY = gql`

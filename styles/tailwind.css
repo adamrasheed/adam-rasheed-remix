@@ -203,11 +203,15 @@
   }
 
   .page-content h2 {
-    @apply text-3xl;
+    @apply text-2xl;
   }
 
   .page-content h3 {
-    @apply text-2xl;
+    @apply text-xl;
+  }
+
+  .page-content h4 {
+    @apply text-lg;
   }
 
   .page-content img,
@@ -220,7 +224,7 @@
     max-width: 100%;
   }
   figcaption {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-variant-caps: all-small-caps;
     text-align: center;
     margin: 0.5rem auto;

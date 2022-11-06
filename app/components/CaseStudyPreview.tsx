@@ -10,7 +10,6 @@ const CaseStudyPreview: FC<ICaseStudyPreview> = ({
   customFields,
 }) => {
   const img = featuredImage.node;
-  console.log("casetsutdyURI", uri);
 
   return (
     <div className="case-study-preview" key={id}>
@@ -25,7 +24,7 @@ const CaseStudyPreview: FC<ICaseStudyPreview> = ({
       <div className="case-study-preview-content">
         <div>
           <h3 className="case-study-preview-title">
-            <Link to={`/case-studies/`}>{title}</Link>
+            <Link to={uri}>{title}</Link>
           </h3>
           <ul className="case-study-overviews">
             {customFields.overview?.map((overview) => (
@@ -34,7 +33,7 @@ const CaseStudyPreview: FC<ICaseStudyPreview> = ({
               </li>
             ))}
           </ul>
-          <Link className="btn" to={`case-studies/`}>
+          <Link className="btn" to={uri}>
             View Case Study
           </Link>
         </div>

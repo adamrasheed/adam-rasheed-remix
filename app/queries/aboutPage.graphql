@@ -1,0 +1,31 @@
+query AboutPage {
+  page(id: "about", idType: URI) {
+    id
+    title
+    uri
+    featuredImage {
+      node {
+        altText
+        sourceUrl
+        srcSet
+      }
+    }
+    content
+    customFields {
+      education {
+        title
+        description
+        url {
+          url
+        }
+      }
+      talks {
+        title
+        url {
+          url
+        }
+        description
+      }
+    }
+  }
+}
