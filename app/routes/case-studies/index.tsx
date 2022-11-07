@@ -2,7 +2,7 @@ import { useLoaderData } from "@remix-run/react";
 import CaseStudyPreview from "~/components/CaseStudyPreview";
 import { client } from "~/lib/apollo";
 import { CASE_STUDIES } from "~/queries";
-import { ICaseStudyPreview, IHome } from "~/types";
+import type { ICaseStudyPreview, IHome } from "~/types";
 
 export async function loader() {
   const { data } = await client.query<{ caseStudies: IHome["caseStudies"] }>({
@@ -20,8 +20,6 @@ export default function CaseStudies() {
   const { caseStudies } = useLoaderData<{
     caseStudies: ICaseStudyPreview[];
   }>();
-
-  console.log(caseStudies);
 
   return (
     <div className="page-container">

@@ -72,6 +72,10 @@
     text-decoration: none;
   }
 
+  .btn.primary {
+    @apply bg-blue-600 font-semibold leading-none text-white;
+  }
+
   .container.no-padding {
   }
 
@@ -272,6 +276,18 @@
   }
 
   .post-container {
-    @apply container p-0 grid gap-8;
+    @apply container grid gap-8 md:grid-cols-[1fr_auto];
+  }
+
+  .post-article {
+  }
+
+  .sidebar {
+  }
+
+  .affiliate_disclaimer {
+    @apply text-xs text-coolGray-500;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
   }
 }

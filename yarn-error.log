@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/adamrasheed/.nvm/versions/node/v17.7.1/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js add @fortawesome/pro-regular-svg-icons
+  /Users/adamrasheed/.nvm/versions/node/v17.7.1/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js
 
 PATH: 
-  /Users/adamrasheed/.nvm/versions/node/v17.7.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+  /usr/local/opt/postgresql@10/bin:/Users/adamrasheed/.nvm/versions/node/v17.7.1/bin:/Users/adamrasheed/.rbenv/shims:/Users/adamrasheed/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 
 Yarn version: 
   1.22.19
@@ -14,17 +14,15 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@fortawesome%2fpro-regular-svg-icons: Not found
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
-      at Request.self.callback (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
-      at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:641:28)
-      at IncomingMessage.emit (node:events:539:35)
-      at endReadableNT (node:internal/streams/readable:1342:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: Failed to replace env in config: ${process.env.FONT_AWESOME_TOKEN}
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:94933:13
+      at String.replace (<anonymous>)
+      at envReplace (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:94928:16)
+      at Function.normalizeConfig (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:31938:69)
+      at NpmRegistry.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:31968:34)
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -40,12 +38,15 @@ npm manifest:
     "dependencies": {
       "@apollo/client": "^3.7.0",
       "@fortawesome/fontawesome-svg-core": "^6.2.0",
+      "@fortawesome/free-brands-svg-icons": "^6.2.0",
       "@fortawesome/free-solid-svg-icons": "^6.2.0",
+      "@fortawesome/pro-regular-svg-icons": "^6.2.0",
       "@fortawesome/react-fontawesome": "^0.2.0",
       "@remix-run/node": "^1.7.2",
       "@remix-run/react": "^1.7.2",
       "@remix-run/vercel": "^1.7.2",
       "@vercel/node": "^2.4.4",
+      "clsx": "^1.2.1",
       "graphql": "^16.6.0",
       "react": "^18.2.0",
       "react-dom": "^18.2.0"
@@ -1177,10 +1178,24 @@ Lockfile:
     dependencies:
       "@fortawesome/fontawesome-common-types" "6.2.0"
   
+  "@fortawesome/free-brands-svg-icons@^6.2.0":
+    version "6.2.0"
+    resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-6.2.0.tgz#ce072179677f9b5d6767f918cfbf296f357cc1d0"
+    integrity sha512-fm1y4NyZ2qKYNmYhdMz9VAWRw1Et7PMHNunSw3W0SVAwKwv6o0qiJworLH3Y9SnmhHzAymXJwCX1op22FFvGiA==
+    dependencies:
+      "@fortawesome/fontawesome-common-types" "6.2.0"
+  
   "@fortawesome/free-solid-svg-icons@^6.2.0":
     version "6.2.0"
     resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-6.2.0.tgz#8dcde48109354fd7a5ece8ea48d678bb91d4b5f0"
     integrity sha512-UjCILHIQ4I8cN46EiQn0CZL/h8AwCGgR//1c4R96Q5viSRwuKVo0NdQEc4bm+69ZwC0dUvjbDqAHF1RR5FA3XA==
+    dependencies:
+      "@fortawesome/fontawesome-common-types" "6.2.0"
+  
+  "@fortawesome/pro-regular-svg-icons@^6.2.0":
+    version "6.2.0"
+    resolved "https://npm.fontawesome.com/@fortawesome/pro-regular-svg-icons/-/6.2.0/pro-regular-svg-icons-6.2.0.tgz#4a7b48fa35a1b08c5d48fcc0b8f956a7b66a96a4"
+    integrity sha512-1DKWVpAgEBfUCzcgnldnkxuVGKqH57dbrNwEfdb/AsNPDUf1dAZXNjZTCvPHNOMpztcPjYzWsQNi4oZoj8EAQA==
     dependencies:
       "@fortawesome/fontawesome-common-types" "6.2.0"
   
@@ -2509,6 +2524,11 @@ Lockfile:
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
     integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
+  
+  clsx@^1.2.1:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+    integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
   
   code-block-writer@^10.1.1:
     version "10.1.1"

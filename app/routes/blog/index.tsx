@@ -17,8 +17,6 @@ export default function Blog() {
     posts: { edges },
   } = useLoaderData<{ posts: IPostPreviews }>();
 
-  console.log(edges);
-
   return (
     <div className="page-container">
       <h1 className="page-title">Blog</h1>

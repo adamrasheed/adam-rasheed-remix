@@ -1,4 +1,4 @@
-import { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { client } from "~/lib/apollo";
@@ -7,7 +7,6 @@ import { CASE_STUDY_QUERY } from "../../queries";
 
 export async function loader({ params }: LoaderArgs) {
   const slug = params.caseStudy;
-  console.log({ slug });
 
   const { data } = await client.query({
     query: CASE_STUDY_QUERY,

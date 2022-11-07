@@ -3,7 +3,7 @@ import CASE_STUDY_PREVIEWS from "./caseStudyPreview.fragment.graphql";
 import ABOUT_PAGE from "./aboutPage.graphql";
 import CASE_STUDY from "./caseStudy.graphql";
 import CONTENT_TYPE from "./contentType.fragment.graphql";
-import BLOG_POST_QUERY from "./blogPost.graphql";
+import POST_TAGS from "./postTags.fragment.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -92,5 +92,28 @@ export const BLOG_PREVIEWS = gql`
 `;
 
 export const BLOG_POST = gql`
-  ${BLOG_POST_QUERY}
+  query BlogPost($slug: ID!) {
+    post(id: $slug, idType: URI) {
+      id
+      title
+      date
+      content
+      ...PostTagsFragment
+      postAcf {
+        ctaTitle
+        ctaDescription
+        convertkitFormId
+      }
+    }
+  }
+  ${POST_TAGS}
+`;
+
+export const PAGE_QUERY = gql`
+  query Page($slug: ID!) {
+    page(id: $slug, idType: URI) {
+      title
+      content
+    }
+  }
 `;

@@ -1,0 +1,10 @@
+fragment PostTagsFragment on Post {
+  tags {
+    edges {
+      node {
+        name
+        slug
+      }
+    }
+  }
+}

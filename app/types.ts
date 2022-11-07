@@ -166,3 +166,36 @@ export type IPostCustomFields = {
   ctaTitle: string | null;
   __typename: "Post_Postacf";
 };
+
+export type IPostTagNode = {
+  name: string;
+  slug: string;
+  __typename: "Tag";
+};
+
+export type IPostTag = {
+  __typename: "PostToTagConnectionEdge";
+  node: IPostTagNode;
+};
+
+export type IPostTags = {
+  __typename: "PostToTagConnection";
+  edges: IPostTag[];
+};
+
+export type IPost = {
+  __typename: "Post";
+  title: "Using WordPress as a Headless CMS for your Next React Project";
+  date: string;
+  uri: string;
+  id: string;
+  content: string;
+  postAct: IPostCustomFields;
+  tags: IPostTags;
+};
+
+export type IFreelancePage = {
+  content: string;
+  title: string;
+  __typename: "Page";
+};

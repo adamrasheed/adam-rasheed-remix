@@ -1,14 +1,11 @@
-import { LoaderArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import AboutInfoSection from "~/components/AboutInfoSection";
 import PostPreview from "~/components/PostPreview";
-import PostPreviews from "~/components/PostPreviews";
 import { client } from "~/lib/apollo";
 import { ABOUT_PAGE_QUERY } from "~/queries";
-import { IAboutPage } from "~/types";
+import type { IAboutPage } from "~/types";
 
-export async function loader({ params }: LoaderArgs) {
-  const slug = params.caseStudy;
+export async function loader() {
   const { data } = await client.query({
     query: ABOUT_PAGE_QUERY,
   });
@@ -21,8 +18,6 @@ export default function About() {
     page,
     posts: { edges: postPreviews },
   } = useLoaderData<IAboutPage>();
-
-  console.log("posts", postPreviews);
 
   const {
     title,
