@@ -67,10 +67,6 @@ export default function App() {
       <head>
         <Meta />
         <Links />
-        <script
-          src="https://kit.fontawesome.com/1d237521ab.js"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className="flex flex-col items-stretch justify-start min-h-screen">
         <Header menuItems={menuItems} />

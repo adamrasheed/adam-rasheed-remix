@@ -23,6 +23,20 @@
     font-family: -apple-system-body, sans-serif;
   }
 
+  input {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+  }
+
+  label {
+    @apply block text-xs mb-1;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
+  }
+
   .header {
     @apply container grid place-items-center gap-4;
     grid-template-columns: auto auto;
@@ -276,7 +290,7 @@
   }
 
   .post-container {
-    @apply container grid gap-8 md:grid-cols-[1fr_auto];
+    @apply container my-4 grid gap-8 md:grid-cols-[1fr_auto];
   }
 
   .post-article {
@@ -286,7 +300,7 @@
   }
 
   .affiliate_disclaimer {
-    @apply text-xs text-coolGray-500;
+    @apply text-xs text-gray-500;
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
   }
