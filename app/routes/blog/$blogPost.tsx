@@ -1,5 +1,5 @@
-import type { ActionFunction, LoaderArgs } from "@remix-run/node";
-import { useActionData, useLoaderData } from "@remix-run/react";
+import type { ActionFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import ConvertKitForm from "~/components/ConvertKitForm";
 import PostSidebar from "~/components/PostSidebar";
 import { DEFAULT_CK_FORM_ID } from "~/constants";
@@ -33,6 +33,36 @@ export const action: ActionFunction = async ({ request }) => {
   return res.json();
 };
 
+type LoaderData = {
+  post: IPost;
+  posts: IRelatedPosts;
+};
+
+export const meta: MetaFunction = ({
+  data,
+}: {
+  data: LoaderData | undefined;
+}) => {
+  if (!data) {
+    return {
+      title: "Adam Rasheed",
+      description: "what",
+    };
+  }
+
+  const { title, excerpt: excerptHtml } = data.post;
+
+  const description = excerptHtml
+    .replace(/(<([^>]+)>)/gi, "")
+    .replace(" [&hellip;]\n", "")
+    .replace("\n", "");
+
+  return {
+    title,
+    description,
+  };
+};
+
 export async function loader({ params }: LoaderArgs) {
   const slug = params.blogPost;
   const { data } = await client.query({
@@ -44,10 +74,7 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export default function BlogPost() {
-  const { post, posts } = useLoaderData<{
-    post: IPost;
-    posts: IRelatedPosts;
-  }>();
+  const { post, posts } = useLoaderData<LoaderData>();
 
   const { title, date, content, tags, postAcf } = post;
 

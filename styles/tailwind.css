@@ -4,7 +4,7 @@
 
 @layer components {
   a {
-    @apply decoration-wavy font-bold hover:decoration-wavy;
+    @apply decoration-wavy font-bold hover:decoration-wavy transition-all hover:text-fuchsia-600 focus:text-fuchsia-600;
     font-family: -apple-system-body, sans-serif;
   }
 
@@ -73,24 +73,14 @@
   }
 
   .btn {
-    @apply px-6 py-2 block w-fit bg-bgSecondary font-semibold text-sm;
-    line-height: 1;
-    padding-top: 0.375rem;
+    @apply px-6 py-2 block w-fit leading-none bg-bgSecondary font-semibold text-sm hover:bg-bgSecondaryHover focus:bg-bgSecondaryHover hover:text-current focus:text-current;
+
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
   }
 
-  .btn:hover,
-  .btn:focus {
-    background: #e9ebed;
-    text-decoration: none;
-  }
-
   .btn.primary {
     @apply bg-blue-600 font-semibold leading-none text-white;
-  }
-
-  .container.no-padding {
   }
 
   .footer {
@@ -205,16 +195,20 @@
   }
 
   .page-title {
-    @apply font-bold text-xl mb-8;
+    @apply font-bold mb-8 text-3xl;
     font-family: -apple-system-subheadline, sans-serif;
   }
 
-  .page-content {
-    @apply my-8 space-y-4;
+  .post-container {
+    @apply container my-4 md:my-6 grid gap-8 md:grid-cols-[1fr_auto];
   }
 
   .post-content {
-    @apply space-y-8;
+    @apply my-8;
+  }
+
+  .page-content {
+    @apply my-8;
   }
 
   .page-content > *:not(img):not(figure) {
@@ -226,12 +220,19 @@
   .post-content h1,
   .post-content h2,
   .post-content h3,
+  .post-content h4,
   .post-content h5,
   .page-content h1,
   .page-content h2,
   .page-content h3,
+  .page-content h4,
   .page-content h5 {
-    font-weight: bold;
+    @apply font-bold mb-2 mt-6;
+  }
+
+  .post-content p,
+  .page-content p {
+    @apply my-4;
   }
 
   .post-content h2,
@@ -269,11 +270,8 @@
   }
 
   figcaption {
-    font-size: 0.75rem;
+    @apply font-medium mt-2 text-center text-xs text-slate-500;
     font-variant-caps: all-small-caps;
-    text-align: center;
-    margin: 0.5rem auto;
-    font-weight: 500;
   }
 
   .about-container {
@@ -287,10 +285,6 @@
 
   .section-title {
     @apply font-semibold mb-4 leading-none;
-  }
-
-  .post-container {
-    @apply container my-4 grid gap-8 md:grid-cols-[1fr_auto];
   }
 
   .post-article {

@@ -1,9 +1,30 @@
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { client } from "~/lib/apollo";
 import type { ICaseStudy } from "~/types";
 import { CASE_STUDY_QUERY } from "../../queries";
+
+export const meta: MetaFunction = ({
+  data,
+}: {
+  data: { caseStudy: ICaseStudy } | undefined;
+}) => {
+  if (!data) {
+    return {
+      title: "Adam Rasheed",
+      description: "what",
+    };
+  }
+
+  const { title: rawTitle } = data.caseStudy;
+
+  const title = `${rawTitle} | Adam Rasheed`;
+
+  return {
+    title,
+  };
+};
 
 export async function loader({ params }: LoaderArgs) {
   const slug = params.caseStudy;

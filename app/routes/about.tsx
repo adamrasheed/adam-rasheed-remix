@@ -1,9 +1,49 @@
+import { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import AboutInfoSection from "~/components/AboutInfoSection";
 import PostPreview from "~/components/PostPreview";
+import { META } from "~/constants";
 import { client } from "~/lib/apollo";
 import { ABOUT_PAGE_QUERY } from "~/queries";
 import type { IAboutPage } from "~/types";
+
+export const meta: MetaFunction = ({
+  data,
+}: {
+  data: IAboutPage | undefined;
+}) => {
+  if (!data) {
+    return {
+      title: "Adam Rasheed",
+      description: "what",
+    };
+  }
+
+  const {
+    page: {
+      title: rawTitle,
+      featuredImage: {
+        node: { sourceUrl },
+      },
+    },
+  } = data;
+
+  const { twitter } = META.social;
+
+  const title = `${rawTitle} | Adam Rasheed`;
+
+  return {
+    title,
+    description:
+      "Adam Rasheed is a Los Angeles based front-end software engineer who creates well-designed enterprise software and e-commerce stores in Shopify.",
+    "twitter:image": sourceUrl,
+    "twitter:site": twitter.handle,
+    "twitter:title":
+      '"Adam Rasheed is a Los Angeles based front-end software engineer who creates well-designed enterprise software and e-commerce stores in Shopify.',
+    "twitter:creator": twitter.handle,
+    "twitter:card": "summary_large_image",
+  };
+};
 
 export async function loader() {
   const { data } = await client.query({

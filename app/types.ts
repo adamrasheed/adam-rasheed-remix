@@ -204,6 +204,7 @@ export type IPost = {
   date: string;
   uri: string;
   id: string;
+  excerpt: string;
   content: string;
   postAcf: IPostCustomFields;
   tags: IPostTags;

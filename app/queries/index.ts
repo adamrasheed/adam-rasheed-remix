@@ -99,6 +99,7 @@ export const BLOG_POST = gql`
       title
       date
       content
+      excerpt
       ...PostTagsFragment
       postAcf {
         ctaTitle

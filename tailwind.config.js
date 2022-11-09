@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     colors: {
       bgSecondary: "#f4f5f6",
+      bgSecondaryHover: "#e9ebed",
       ...colors,
     },
     container: {

@@ -5,3 +5,5 @@ export const getFormattedDate = (date: string) => {
     year: "numeric",
   });
 };
+
+export const getStrippedHtml = (rawStr: string) => {};

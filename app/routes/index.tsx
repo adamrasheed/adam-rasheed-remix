@@ -19,8 +19,8 @@ export default function Index() {
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <div className="container mt-10 mb-20">
-        <h1 className="text-4xl sm:text-6xl font-bold mb-6 leading-tight mb-4">
+      <div className="container mt-10 mb-20 xl:mt-[8vw] xl:mb-[10vw]">
+        <h1 className="text-4xl sm:text-6xl leading-tight font-bold mb-6 leading-tight mb-4 xl:leading-snug">
           {options.tagline}
         </h1>
         <div

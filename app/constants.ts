@@ -6,3 +6,11 @@ export const AFFILIATE_LINKS: Record<TAGS, string> = {
 };
 
 export const DEFAULT_CK_FORM_ID = "3765543";
+
+export const META = {
+  social: {
+    twitter: {
+      handle: "@ARasheedPhoto",
+    },
+  },
+};
