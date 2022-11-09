@@ -5,21 +5,22 @@ import PostSidebar from "~/components/PostSidebar";
 import { DEFAULT_CK_FORM_ID } from "~/constants";
 import { client } from "~/lib/apollo";
 import { BLOG_POST } from "~/queries";
-import type { IPost } from "~/types";
+import type { IPost, IRelatedPosts } from "~/types";
 import { getFormattedDate } from "~/utils";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
 
-  console.log("YOOOO", formData);
-
   const email = formData.get("email");
   const firstName = formData.get("firstName");
+  const FORM_ID = formData.get("formId");
 
   const API_KEY = process.env.CK_PUBLIC_API;
-  const ENDPOINT = `https://api.convertkit.com/v3/forms/${DEFAULT_CK_FORM_ID}/subscribe`;
+  const ENDPOINT = `https://api.convertkit.com/v3/forms/${
+    FORM_ID || DEFAULT_CK_FORM_ID
+  }/subscribe`;
 
-  console.log({ email, firstName });
+  console.log({ email, firstName, FORM_ID });
 
   const res = await fetch(ENDPOINT, {
     method: "POST",
@@ -43,8 +44,12 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export default function BlogPost() {
-  const { post } = useLoaderData<{ post: IPost }>();
-  const { title, date, content, tags } = post;
+  const { post, posts } = useLoaderData<{
+    post: IPost;
+    posts: IRelatedPosts;
+  }>();
+
+  const { title, date, content, tags, postAcf } = post;
 
   return (
     <div className="post-container">
@@ -55,9 +60,9 @@ export default function BlogPost() {
           className="post-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <ConvertKitForm />
+        <ConvertKitForm formId={postAcf.convertkitFormId} />
       </article>
-      <PostSidebar tags={tags} />
+      <PostSidebar relatedPosts={posts} tags={tags} />
     </div>
   );
 }

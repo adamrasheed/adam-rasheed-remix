@@ -10,4 +10,11 @@ query BlogPost($slug: ID!) {
       convertkitFormId
     }
   }
+  posts(where: { notIn: $slug }) {
+    edges {
+      node {
+        title
+      }
+    }
+  }
 }

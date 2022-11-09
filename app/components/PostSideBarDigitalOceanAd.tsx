@@ -4,7 +4,7 @@ const PostSideBarDigitalOceanAd = () => {
   const url = AFFILIATE_LINKS["digital-ocean"];
 
   return (
-    <div className="sticky top-8">
+    <div className="">
       <div className="p-4 bg-slate-50">
         <a
           href={url}

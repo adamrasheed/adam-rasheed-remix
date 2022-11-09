@@ -183,6 +183,21 @@ export type IPostTags = {
   edges: IPostTag[];
 };
 
+export type IRelatedPost = {
+  __typename: "RootQueryToPostConnectionEdge";
+  node: {
+    id: string;
+    title: string;
+    uri: string;
+    __typename: "Post";
+  };
+};
+
+export type IRelatedPosts = {
+  __typename: "RootQueryToPostConnection";
+  edges: IRelatedPost[];
+};
+
 export type IPost = {
   __typename: "Post";
   title: "Using WordPress as a Headless CMS for your Next React Project";
@@ -190,7 +205,7 @@ export type IPost = {
   uri: string;
   id: string;
   content: string;
-  postAct: IPostCustomFields;
+  postAcf: IPostCustomFields;
   tags: IPostTags;
 };
 

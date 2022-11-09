@@ -1,0 +1,11 @@
+fragment RelatedPosts on BlogPost {
+  posts(first: 4, where: { notIn: [$slug] }) {
+    edges {
+      node {
+        id
+        title
+        uri
+      }
+    }
+  }
+}

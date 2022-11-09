@@ -5,7 +5,7 @@ const PostSidebarShopifyAd = () => {
   const url = AFFILIATE_LINKS["shopify"];
 
   return (
-    <div className="sticky top-8">
+    <div className="">
       <div className="p-8 bg-slate-50">
         <a
           href={url}

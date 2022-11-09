@@ -4,19 +4,19 @@ import { FC } from "react";
 type Props = {
   title?: string;
   subtitle?: string;
+  formId: string | null;
 };
 
 const ConvertKitForm: FC<Props> = ({
   title = "Like this Post? Get helpful Posts like this in Your Inbox!",
   subtitle = "Sign Up today & receive Articles twice a month",
+  formId,
 }) => {
   const actionData = useActionData();
   const { state } = useTransition();
 
   const isSuccessful = !!actionData?.subscription;
   const isSubmitting = state === "submitting";
-
-  console.log({ isSuccessful, isSubmitting });
 
   return (
     <div className="p-8 text-xl space-y-4 bg-slate-50">
@@ -48,6 +48,7 @@ const ConvertKitForm: FC<Props> = ({
             required
           />
         </fieldset>
+        {formId && <input type="hidden" name="formId" value={formId} />}
         <button
           className="btn primary md:col-span-2 md:py-3 md:px-12 w-full max-w-md mx-auto"
           type="submit"

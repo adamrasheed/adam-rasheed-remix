@@ -4,6 +4,7 @@ import ABOUT_PAGE from "./aboutPage.graphql";
 import CASE_STUDY from "./caseStudy.graphql";
 import CONTENT_TYPE from "./contentType.fragment.graphql";
 import POST_TAGS from "./postTags.fragment.graphql";
+import RELATED_POSTS from "./relatedPosts.fragment.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -105,7 +106,17 @@ export const BLOG_POST = gql`
         convertkitFormId
       }
     }
+    posts(first: 4, where: { notIn: [$slug] }) {
+      edges {
+        node {
+          id
+          title
+          uri
+        }
+      }
+    }
   }
+
   ${POST_TAGS}
 `;
 

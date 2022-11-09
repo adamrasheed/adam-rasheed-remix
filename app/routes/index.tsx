@@ -8,8 +8,6 @@ import type { IHome } from "~/types";
 export async function loader() {
   const { data } = await client.query({ query: HOME_QUERY });
 
-  console.log("DATA", data);
-
   return data ?? null;
 }
 
