@@ -5,7 +5,7 @@ const PostSideBarDigitalOceanAd = () => {
 
   return (
     <div className="">
-      <div className="p-4 bg-slate-50">
+      <div className="p-4 bg-slate-50 shadow-md">
         <a
           href={url}
           target={"_blank"}

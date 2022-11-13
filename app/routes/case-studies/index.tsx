@@ -24,7 +24,7 @@ export default function CaseStudies() {
   return (
     <div className="page-container">
       <h1 className="page-title">Case Studies</h1>
-      <div className="case-study-previews">
+      <div className="container mt-8 mb-16 px-0 grid">
         {!!caseStudies.length &&
           caseStudies.map((preview) => (
             <CaseStudyPreview key={preview.id} {...{ ...preview }} />

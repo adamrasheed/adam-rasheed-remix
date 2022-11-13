@@ -124,6 +124,7 @@ export type IHome = {
       node: ICaseStudyPreview;
     }[];
   };
+  weather: IWeatherResp;
 };
 
 export type IPostPreviewSansExcerpt = {
@@ -198,12 +199,29 @@ export type IRelatedPosts = {
   edges: IRelatedPost[];
 };
 
+export type IPostSEO = {
+  title: string;
+  metaDesc: string;
+  opengraphTitle: string;
+  opengraphUrl: string;
+  twitterImage: {
+    altText: string | null;
+    sourceUrl: string | null;
+    srcSet: string | null;
+    __typename: "MediaItem";
+  };
+  twitterTitle: string;
+  twitterDescription: string;
+  __typename: "PostTypeSEO";
+};
+
 export type IPost = {
   __typename: "Post";
   title: "Using WordPress as a Headless CMS for your Next React Project";
   date: string;
   uri: string;
   id: string;
+  seo: IPostSEO;
   excerpt: string;
   content: string;
   postAcf: IPostCustomFields;
@@ -214,4 +232,25 @@ export type IFreelancePage = {
   content: string;
   title: string;
   __typename: "Page";
+};
+
+export type IWeather = {
+  description: string;
+  icon: string;
+  id: number;
+  main: string;
+};
+
+export type IWeatherResp = {
+  base: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
+  };
+  weather: IWeather[];
+  name: string;
 };

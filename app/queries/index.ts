@@ -5,6 +5,7 @@ import CASE_STUDY from "./caseStudy.graphql";
 import CONTENT_TYPE from "./contentType.fragment.graphql";
 import POST_TAGS from "./postTags.fragment.graphql";
 import RELATED_POSTS from "./relatedPosts.fragment.graphql";
+import SEO_META from "./seo.fragment.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -101,6 +102,7 @@ export const BLOG_POST = gql`
       content
       excerpt
       ...PostTagsFragment
+      ...SeoFragment
       postAcf {
         ctaTitle
         ctaDescription
@@ -117,8 +119,8 @@ export const BLOG_POST = gql`
       }
     }
   }
-
   ${POST_TAGS}
+  ${SEO_META}
 `;
 
 export const PAGE_QUERY = gql`

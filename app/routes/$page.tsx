@@ -39,12 +39,9 @@ export default function Page() {
 
   return (
     <div className="page-container">
-      <article>
-        <h1 className="page-title">{title}</h1>
-        <div
-          className="page-content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+      <article className="prose">
+        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
       </article>
     </div>
   );

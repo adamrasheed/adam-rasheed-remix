@@ -40,6 +40,8 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Adam Rasheed",
+  description:
+    "Adam Rasheed is a Los Angeles based frontend software engineer specializing in enterprise software apps.",
   viewport: "width=device-width,initial-scale=1",
 });
 

@@ -6,7 +6,7 @@ const PostSidebarShopifyAd = () => {
 
   return (
     <div className="">
-      <div className="p-8 bg-slate-50">
+      <div className="p-8 bg-slate-50 shadow-md">
         <a
           href={url}
           target={"_blank"}
@@ -32,7 +32,7 @@ const PostSidebarShopifyAd = () => {
 
         <a
           href={url}
-          className="btn bg-[#96bf48] block text-white text-center w-full hover:bg-[#96bf48] focus:bg-[#96bf48]"
+          className="btn bg-Shopify block text-white text-center w-full hover:bg-Shopify focus:bg-Shopify"
         >
           Learn More
         </a>

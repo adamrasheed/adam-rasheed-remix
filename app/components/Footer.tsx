@@ -1,4 +1,5 @@
-import { IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFacebookF,
   faInstagramSquare,
@@ -9,15 +10,14 @@ import {
   faDribbble,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "@remix-run/react";
-import { FC } from "react";
+import clsx from "clsx";
+import type { FC } from "react";
 
-import { SocialAccount } from "~/types";
+import type { SocialAccount } from "~/types";
 
 library.add(
-  fas,
   faFacebookF,
   faInstagramSquare,
   faTwitter,
@@ -33,8 +33,18 @@ type Props = {
   resume?: string;
 };
 
+const socialHoverMap: Record<string, string> = {
+  Instagram: "hover:text-Instagram focus:text-Instagram",
+  Facebook: "hover:text-Facebook focus:text-Facebook",
+  Youtube: "hover:text-Youtube focus:text-Youtube",
+  Dribbble: "hover:text-Dribbble focus:text-Dribbble",
+  LinkedIn: "hover:text-LinkedIn focus:text-LinkedIn",
+  Twitter: "hover:text-Twitter focus:text-Twitter",
+};
+
 const iconMap: Record<string, IconDefinition> = {
-  Twitter: faFacebookF,
+  Twitter: faTwitter,
+  Facebook: faFacebookF,
   Instagram: faInstagram,
   Youtube: faYoutube,
   GitHub: faGithub,
@@ -44,6 +54,7 @@ const iconMap: Record<string, IconDefinition> = {
 
 const Footer: FC<Props> = ({ socialAccounts, resume }) => {
   const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer_container">
@@ -62,12 +73,19 @@ const Footer: FC<Props> = ({ socialAccounts, resume }) => {
         </div>
         <div className="footer_social">
           {socialAccounts.map((item) => (
-            // eslint-disable-next-line jsx-a11y/anchor-is-valid
             <a
               key={item.url.url}
               href={item.url.url}
               target="_blank"
               rel="nopenner noreferrer"
+              className={clsx(
+                socialHoverMap[item.account],
+                "block",
+                "self-center",
+                "flex",
+                "justify-center",
+                "items-center"
+              )}
             >
               <FontAwesomeIcon
                 icon={iconMap[item.account]}

@@ -1,9 +1,10 @@
+import { useState } from "react";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/pro-regular-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "@remix-run/react";
+
 import type { MenuItem } from "~/types";
-import { useState } from "react";
 import MobileNav from "./MobileNav";
 
 type Props = {
@@ -46,7 +47,7 @@ const Header: React.FC<Props> = ({ menuItems }) => {
             menuItems.map((item) => (
               <NavLink
                 prefetch="render"
-                className="font-medium small-caps letter-spacing leading-none"
+                className="font-medium small-caps letter-spacing leading-none header-nav-link"
                 key={item.id}
                 to={item.uri}
               >

@@ -20,8 +20,6 @@ export const action: ActionFunction = async ({ request }) => {
     FORM_ID || DEFAULT_CK_FORM_ID
   }/subscribe`;
 
-  console.log({ email, firstName, FORM_ID });
-
   const res = await fetch(ENDPOINT, {
     method: "POST",
     body: JSON.stringify({ api_key: API_KEY, email, first_name: firstName }),
@@ -50,12 +48,17 @@ export const meta: MetaFunction = ({
     };
   }
 
-  const { title, excerpt: excerptHtml } = data.post;
+  const {
+    excerpt: excerptHtml,
+    seo: { title, metaDesc, twitterDescription, ...seo },
+  } = data.post;
 
-  const description = excerptHtml
+  const defaultDescription = excerptHtml
     .replace(/(<([^>]+)>)/gi, "")
     .replace(" [&hellip;]\n", "")
     .replace("\n", "");
+
+  const description = metaDesc || defaultDescription;
 
   return {
     title,
@@ -80,15 +83,14 @@ export default function BlogPost() {
 
   return (
     <div className="post-container">
-      <article className="post-article">
-        <h1 className="page-title">{title}</h1>
-        <p>{getFormattedDate(date)}</p>
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+      <div className="grid gap-8">
+        <article className="prose">
+          <h1>{title}</h1>
+          <p>{getFormattedDate(date)}</p>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </article>
         <ConvertKitForm formId={postAcf.convertkitFormId} />
-      </article>
+      </div>
       <PostSidebar relatedPosts={posts} tags={tags} />
     </div>
   );

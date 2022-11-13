@@ -19,7 +19,7 @@ const ConvertKitForm: FC<Props> = ({
   const isSubmitting = state === "submitting";
 
   return (
-    <div className="p-8 text-xl space-y-4 bg-slate-50">
+    <div className="p-8 text-xl space-y-4 bg-slate-50 shadow-sm">
       <h3 className="font-bold">{title}</h3>
       <p className="">{subtitle}</p>
       <Form

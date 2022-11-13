@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 @layer components {
   a {
-    @apply decoration-wavy font-bold hover:decoration-wavy transition-all hover:text-fuchsia-600 focus:text-fuchsia-600;
+    @apply font-bold transition-all hover:underline focus:underline;
     font-family: -apple-system-body, sans-serif;
   }
 
@@ -24,11 +25,7 @@
   }
 
   input {
-    display: block;
-    width: 100%;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 0.25rem 0.5rem;
+    @apply block w-full text-base leading-none p-2 border-solid border-slate-400 shadow-inner focus:shadow-inner;
   }
 
   label {
@@ -49,6 +46,10 @@
     display: inline-block;
     background: currentColor;
     margin: 0px 4px 0px 6px;
+  }
+
+  .header-nav-link.active {
+    @apply font-semibold;
   }
 
   .mobile-menu {
@@ -73,7 +74,7 @@
   }
 
   .btn {
-    @apply px-6 py-2 block w-fit leading-none bg-bgSecondary font-semibold text-sm hover:bg-bgSecondaryHover focus:bg-bgSecondaryHover hover:text-current focus:text-current;
+    @apply px-6 py-2 block w-fit leading-none bg-bgSecondary font-semibold text-sm hover:bg-bgSecondaryHover focus:bg-bgSecondaryHover hover:text-current focus:text-current hover:no-underline focus:no-underline;
 
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
@@ -84,7 +85,7 @@
   }
 
   .footer {
-    @apply py-8 border-t;
+    @apply py-6 border-t;
     border-color: currentColor;
   }
 
@@ -102,7 +103,7 @@
   }
 
   .footer_social {
-    @apply flex justify-center items-center gap-6 place-items-center;
+    @apply flex justify-center self-center items-center gap-6 place-items-center;
   }
 
   .footer_icon {
@@ -156,7 +157,7 @@
   }
 
   .case-study-preview {
-    @apply mb-16 px-4 grid;
+    @apply mb-16 grid;
     grid-gap: 2rem;
   }
 
@@ -165,7 +166,7 @@
   }
 
   .case-study-preview-content {
-    @apply grid gap-8 md:grid-cols-2;
+    @apply grid gap-8 md:grid-cols-2 px-4 md:px-0;
   }
 
   .case-study-preview-title {
@@ -190,21 +191,16 @@
     @apply text-sm;
   }
 
-  .page-container {
-    @apply container;
+  .page-title {
+    @apply text-4xl font-bold mb-8;
   }
 
-  .page-title {
-    @apply font-bold mb-8 text-3xl;
-    font-family: -apple-system-subheadline, sans-serif;
+  .page-container {
+    @apply mt-4 mb-12 container;
   }
 
   .post-container {
     @apply container my-4 md:my-6 grid gap-8 md:grid-cols-[1fr_auto];
-  }
-
-  .post-content {
-    @apply my-8;
   }
 
   .page-content {
@@ -215,39 +211,6 @@
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .post-content h1,
-  .post-content h2,
-  .post-content h3,
-  .post-content h4,
-  .post-content h5,
-  .page-content h1,
-  .page-content h2,
-  .page-content h3,
-  .page-content h4,
-  .page-content h5 {
-    @apply font-bold mb-2 mt-6;
-  }
-
-  .post-content p,
-  .page-content p {
-    @apply my-4;
-  }
-
-  .post-content h2,
-  .page-content h2 {
-    @apply text-2xl;
-  }
-
-  .post-content h3,
-  .page-content h3 {
-    @apply text-xl;
-  }
-
-  .post-content h4,
-  .page-content h4 {
-    @apply text-lg;
   }
 
   .post-content figure,
@@ -294,7 +257,7 @@
   }
 
   .affiliate_disclaimer {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-gray-500 mx-4 my-1;
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
   }

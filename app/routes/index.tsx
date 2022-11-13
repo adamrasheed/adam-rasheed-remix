@@ -1,21 +1,28 @@
 import { Link, useLoaderData } from "@remix-run/react";
+import { fetchWeather } from "~/api";
 
 import CaseStudyPreview from "~/components/CaseStudyPreview";
 import { client } from "~/lib/apollo";
 import { HOME_QUERY } from "~/queries";
-import type { IHome } from "~/types";
+import type { IHome, IWeatherResp } from "~/types";
+import { getWeatherString } from "~/utils";
 
 export async function loader() {
   const { data } = await client.query({ query: HOME_QUERY });
+  const weatherResp = await fetchWeather();
+  const weather = (await weatherResp.json()) as IWeatherResp;
 
-  return data ?? null;
+  return { ...data, weather };
 }
 
 export default function Index() {
   const {
     siteOptions: { options },
     caseStudies: { edges: caseStudyPreviews },
+    weather,
   } = useLoaderData<IHome>();
+
+  const weatherSentence = getWeatherString(weather);
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -23,6 +30,7 @@ export default function Index() {
         <h1 className="text-4xl sm:text-6xl leading-tight font-bold mb-6 leading-tight mb-4 xl:leading-snug">
           {options.tagline}
         </h1>
+        <p className="my-4">{weatherSentence}</p>
         <div
           className="her-description body"
           dangerouslySetInnerHTML={{ __html: options.career }}
