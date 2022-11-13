@@ -9,20 +9,19 @@ import { getWeatherString } from "~/utils";
 
 export async function loader() {
   const { data } = await client.query({ query: HOME_QUERY });
-  const weatherResp = await fetchWeather();
-  const weather = (await weatherResp.json()) as IWeatherResp;
+  // const weatherResp = await fetchWeather();
+  // const weather = (await weatherResp.json()) as IWeatherResp;
 
-  return { ...data, weather };
+  return { ...data };
 }
 
 export default function Index() {
   const {
     siteOptions: { options },
     caseStudies: { edges: caseStudyPreviews },
-    weather,
   } = useLoaderData<IHome>();
 
-  const weatherSentence = getWeatherString(weather);
+  // const weatherSentence = getWeatherString(weather);
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -30,7 +29,7 @@ export default function Index() {
         <h1 className="text-4xl sm:text-6xl leading-tight font-bold mb-6 leading-tight mb-4 xl:leading-snug">
           {options.tagline}
         </h1>
-        <p className="my-4">{weatherSentence}</p>
+        {/* <p className="my-4">{weatherSentence}</p> */}
         <div
           className="her-description body"
           dangerouslySetInnerHTML={{ __html: options.career }}
