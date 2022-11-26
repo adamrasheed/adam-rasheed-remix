@@ -61,14 +61,14 @@ const Footer: FC<Props> = ({ socialAccounts, resume }) => {
         <div className="footer_info">
           <p className="text-sml">Adam Rasheed © {year}</p>
           {resume && (
-            <Link
+            <a
               className="btn lrg footer_btn"
-              to={resume}
+              href={resume}
               target="_blank"
               rel="noopener noreferrer"
             >
               View Resume
-            </Link>
+            </a>
           )}
         </div>
         <div className="footer_social">

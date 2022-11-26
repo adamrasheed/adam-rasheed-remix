@@ -80,9 +80,7 @@ export async function loader({ params }: LoaderArgs) {
 export default function BlogPost() {
   const { post, posts } = useLoaderData<LoaderData>();
 
-  const { title, date, uri, content, tags, postAcf, contentTypeName } = post;
-
-  console.log(contentTypeName);
+  const { title, date, uri, content, tags, postAcf } = post;
 
   const breadcrumbs: BreadCrumbType[] = [
     { title: "Home", path: "/" },
