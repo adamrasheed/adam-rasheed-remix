@@ -71,7 +71,10 @@ export type IAboutPage = {
   posts: IAboutPostPreviews;
 };
 
-export type ICaseStudy = { content: string } & ICaseStudyPreview;
+export type ICaseStudy = {
+  content: string;
+  contentTypeName: string;
+} & ICaseStudyPreview;
 
 export type SiteOptions = {
   __typename: "SiteOptions";
@@ -219,6 +222,7 @@ export type IPost = {
   __typename: "Post";
   title: "Using WordPress as a Headless CMS for your Next React Project";
   date: string;
+  contentTypeName: string;
   uri: string;
   id: string;
   seo: IPostSEO;

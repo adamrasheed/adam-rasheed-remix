@@ -3,6 +3,7 @@ query CaseStudyQuery($slug: ID!) {
     id
     title
     uri
+    contentTypeName
     featuredImage {
       node {
         altText

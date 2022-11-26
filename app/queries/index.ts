@@ -6,6 +6,7 @@ import CONTENT_TYPE from "./contentType.fragment.graphql";
 import POST_TAGS from "./postTags.fragment.graphql";
 import RELATED_POSTS from "./relatedPosts.fragment.graphql";
 import SEO_META from "./seo.fragment.graphql";
+import CS_SEO_META from "./seoCaseStudy.fragment.graphql";
 
 export const HEADER_FOOTER_INFO = gql`
   query HeaderFooterInfo {
@@ -35,7 +36,31 @@ export const ABOUT_PAGE_QUERY = gql`
 `;
 
 export const CASE_STUDY_QUERY = gql`
-  ${CASE_STUDY}
+  query CaseStudyQuery($slug: ID!) {
+    caseStudy(id: $slug, idType: URI) {
+      id
+      title
+      ...SeoFragment
+      uri
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+          srcSet
+        }
+      }
+      customFields {
+        subtitle
+        teaser
+        overview {
+          overviewPoint
+        }
+      }
+      contentTypeName
+      content
+    }
+  }
+  ${CS_SEO_META}
 `;
 
 export const CASE_STUDIES = gql`
@@ -98,7 +123,9 @@ export const BLOG_POST = gql`
     post(id: $slug, idType: URI) {
       id
       title
+      contentTypeName
       date
+      uri
       content
       excerpt
       ...PostTagsFragment

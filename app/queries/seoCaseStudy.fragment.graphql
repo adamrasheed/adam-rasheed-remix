@@ -1,0 +1,15 @@
+fragment SeoFragment on CaseStudy {
+  seo {
+    title
+    metaDesc
+    opengraphTitle
+    opengraphUrl
+    twitterTitle
+    twitterDescription
+    twitterImage {
+      altText
+      sourceUrl
+      srcSet
+    }
+  }
+}

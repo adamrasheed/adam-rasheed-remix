@@ -207,6 +207,10 @@
     @apply my-8;
   }
 
+  .case-study-content.prose {
+    max-width: none;
+  }
+
   .page-content > *:not(img):not(figure) {
     max-width: 48rem;
     margin-left: auto;
@@ -219,6 +223,7 @@
   .page-content figure {
     display: block;
     width: 100%;
+    max-width: 100%;
   }
 
   div.wp-caption {

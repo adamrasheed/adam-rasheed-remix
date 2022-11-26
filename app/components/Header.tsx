@@ -47,7 +47,13 @@ const Header: React.FC<Props> = ({ menuItems }) => {
             menuItems.map((item) => (
               <NavLink
                 prefetch="render"
-                className="font-medium small-caps letter-spacing leading-none header-nav-link"
+                className={clsx(
+                  "font-medium",
+                  "small-caps",
+                  "letter-spacing",
+                  "leading-none",
+                  "header-nav-link"
+                )}
                 key={item.id}
                 to={item.uri}
               >

@@ -1,5 +1,6 @@
 import type { ActionFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import BreadCrumbs, { BreadCrumbType } from "~/components/BreadCrumbs";
 import ConvertKitForm from "~/components/ConvertKitForm";
 import PostSidebar from "~/components/PostSidebar";
 import { DEFAULT_CK_FORM_ID } from "~/constants";
@@ -79,14 +80,23 @@ export async function loader({ params }: LoaderArgs) {
 export default function BlogPost() {
   const { post, posts } = useLoaderData<LoaderData>();
 
-  const { title, date, content, tags, postAcf } = post;
+  const { title, date, uri, content, tags, postAcf, contentTypeName } = post;
+
+  console.log(contentTypeName);
+
+  const breadcrumbs: BreadCrumbType[] = [
+    { title: "Home", path: "/" },
+    { title: "Blog", path: `/blog` },
+    { title, path: uri },
+  ];
 
   return (
     <div className="post-container">
       <div className="grid gap-8">
+        <BreadCrumbs breadcrumbs={breadcrumbs} />
         <article className="prose">
           <h1>{title}</h1>
-          <p>{getFormattedDate(date)}</p>
+          <p className="small-caps">{getFormattedDate(date)}</p>
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </article>
         <ConvertKitForm formId={postAcf.convertkitFormId} />

@@ -84,7 +84,8 @@ const Footer: FC<Props> = ({ socialAccounts, resume }) => {
                 "self-center",
                 "flex",
                 "justify-center",
-                "items-center"
+                "items-center",
+                "focus:outline-hidden"
               )}
             >
               <FontAwesomeIcon

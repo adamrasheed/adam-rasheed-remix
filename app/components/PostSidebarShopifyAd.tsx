@@ -32,11 +32,15 @@ const PostSidebarShopifyAd = () => {
 
         <a
           href={url}
-          className="btn bg-Shopify block text-white text-center w-full hover:bg-Shopify focus:bg-Shopify"
+          className="btn bg-Shopify block text-white text-center w-full hover:bg-Shopify focus:bg-Shopify hover:text-white focus:text-white"
         >
           Learn More
         </a>
       </div>
+      <p className="affiliate_disclaimer">
+        DOPE AF AFFILIATE LINK. If you sign up above, I get a referral
+        commission at no additional cost to you.
+      </p>
     </div>
   );
 };

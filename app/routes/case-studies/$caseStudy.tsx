@@ -1,5 +1,6 @@
 import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import BreadCrumbs, { BreadCrumbType } from "~/components/BreadCrumbs";
 
 import { client } from "~/lib/apollo";
 import type { ICaseStudy } from "~/types";
@@ -13,7 +14,7 @@ export const meta: MetaFunction = ({
   if (!data) {
     return {
       title: "Adam Rasheed",
-      description: "what",
+      description: "Adam Rasheed is a dope AF developer.",
     };
   }
 
@@ -42,13 +43,22 @@ export default function CaseStudy() {
 
   const {
     title,
+    contentTypeName,
+    uri,
     featuredImage: { node: img },
     content,
   } = caseStudy;
 
+  const breadcrumbs: BreadCrumbType[] = [
+    { title: "Home", path: "/" },
+    { title: "Case Studies", path: `/${contentTypeName}` },
+    { title, path: uri },
+  ];
+
   return (
     <>
       <div className="container">
+        <BreadCrumbs breadcrumbs={breadcrumbs} />
         <h1 className="page-title">{title}</h1>
       </div>
       <div className="container p-0">
@@ -61,7 +71,7 @@ export default function CaseStudy() {
       </div>
       <div className="container">
         <div
-          className="page-content"
+          className="page-content case-study-content prose"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
