@@ -204,7 +204,7 @@
   }
 
   .page-content {
-    @apply my-8;
+    @apply mt-8 mb-16;
   }
 
   .case-study-content.prose {
@@ -243,8 +243,7 @@
   }
 
   .about-container {
-    @apply grid gap-8 my-8;
-    grid-template-columns: 2fr 1fr;
+    @apply grid gap-8 my-8 md:grid-cols-[2fr_1fr];
   }
 
   .post-preview-excerpt > p {

@@ -11,9 +11,11 @@ type Props = {
 
 const MobileNav: FC<Props> = ({ menuItems, isMenuOpen, setIsOpen }) => {
   return (
-    <div className={clsx("mobile-menu", { open: isMenuOpen })}>
+    <div
+      className={clsx("mobile-menu", "dark:bg-slate-900", { open: isMenuOpen })}
+    >
       <p className="p-8 small-caps text-xl accent">Menu</p>
-      <nav className="divide-y divide-slate-200">
+      <nav className="divide-y divide-slate-200 dark:divide-slate-800">
         {!!menuItems.length &&
           menuItems.map((item) => (
             <NavLink
