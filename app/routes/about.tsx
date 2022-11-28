@@ -78,7 +78,10 @@ export default function About() {
         />
       </div>
       <div className="about-container">
-        <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
+        <div
+          className="prose dark:prose-invert"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
 
         <div className="about-info">
           <AboutInfoSection title="Talks" data={talks} />

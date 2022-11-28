@@ -71,7 +71,7 @@ export default function CaseStudy() {
       </div>
       <div className="container">
         <div
-          className="page-content case-study-content prose"
+          className="page-content case-study-content prose dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
