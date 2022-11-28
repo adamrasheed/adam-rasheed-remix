@@ -70,7 +70,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col items-stretch justify-start min-h-screen">
+      <body className="flex flex-col items-stretch justify-start min-h-screen dark:bg-slate-900 dark:text-slate-300">
         <Header menuItems={menuItems} />
         <main className="flex-grow">
           <Outlet />

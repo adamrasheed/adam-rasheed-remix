@@ -74,7 +74,7 @@
   }
 
   .btn {
-    @apply px-6 py-2 block w-fit leading-none bg-bgSecondary font-semibold text-sm hover:bg-bgSecondaryHover focus:bg-bgSecondaryHover hover:text-current focus:text-current hover:no-underline focus:no-underline;
+    @apply px-6 py-2 block w-fit leading-none bg-bgSecondary dark:bg-sky-900 dark:hover:bg-sky-800 dark:focus:bg-sky-800 font-semibold text-sm hover:bg-bgSecondaryHover focus:bg-bgSecondaryHover hover:text-current focus:text-current hover:no-underline focus:no-underline;
 
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
@@ -132,11 +132,11 @@
 
   .accent::after,
   .preview-category-title::after {
+    @apply inline-block w-8 bg-current;
     content: "";
     display: inline-block;
     width: 32px;
     height: 2px;
-    background: rgb(0, 0, 0);
     margin-bottom: 0.25rem;
     margin-left: 0.75rem;
     font-variant: small-caps;

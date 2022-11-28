@@ -20,7 +20,7 @@ const Header: React.FC<Props> = ({ menuItems }) => {
     <>
       <header className="my-8 header">
         <Link
-          className="header-title flex gap-1 items-center justify-self-start"
+          className="header-title flex gap-1 items-center justify-self-start hover:no-underline focus:no-underline"
           to="/"
         >
           <h1 className="font-bold text-xl header-title-text">Adam Rasheed</h1>

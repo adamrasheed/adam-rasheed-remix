@@ -39,7 +39,7 @@ export default function Page() {
 
   return (
     <div className="page-container">
-      <article className="prose">
+      <article className="prose dark:prose-invert">
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </article>

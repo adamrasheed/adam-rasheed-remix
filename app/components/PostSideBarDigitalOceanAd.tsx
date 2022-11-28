@@ -5,7 +5,7 @@ const PostSideBarDigitalOceanAd = () => {
 
   return (
     <div className="">
-      <div className="p-4 bg-slate-50 shadow-md">
+      <div className="p-4 bg-slate-50 dark:bg-slate-800 dark:text-slate-300 shadow-md">
         <a
           href={url}
           target={"_blank"}
@@ -23,7 +23,10 @@ const PostSideBarDigitalOceanAd = () => {
           Learn More
         </a>
       </div>
-      <p className="affiliate_disclaimer">DOPE AF AFFILIATE LINK</p>
+      <p className="affiliate_disclaimer">
+        DOPE AF AFFILIATE LINK. If you sign up above, I get a referral
+        commission at no additional cost to you.
+      </p>
     </div>
   );
 };

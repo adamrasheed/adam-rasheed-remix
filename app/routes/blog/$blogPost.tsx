@@ -92,7 +92,7 @@ export default function BlogPost() {
     <div className="post-container">
       <div className="grid gap-8">
         <BreadCrumbs breadcrumbs={breadcrumbs} />
-        <article className="prose">
+        <article className="prose dark:prose-invert">
           <h1>{title}</h1>
           <p className="small-caps">{getFormattedDate(date)}</p>
           <div dangerouslySetInnerHTML={{ __html: content }} />
