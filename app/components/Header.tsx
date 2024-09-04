@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({ menuItems }) => {
         >
           <h1 className="font-bold text-xl header-title-text">Adam Rasheed</h1>
           <span className="text-xs font-normal small-caps">
-            Frontend Developer
+            Frontend Software Engineer
           </span>
         </Link>
         <button
